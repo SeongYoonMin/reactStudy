@@ -17,22 +17,20 @@
     function App() {
         const [minutes, setMinutes] = React.useState();
         const onChange = (event) => {
-            if(event.target.value.length < 4){
-                console.log("shorts");
-            }else if(event.target.value.length > 12){
-                console.log("long");
-            }else{
                 setMinutes(event.target.value);
-            }
         }
+        const reset = () => setMinutes(0);
         return (
             <div>
                 <h1>Super Converter</h1>
                 <label htmlFor="minutes">Minutes</label>
                 <input value={minutes} id="minutes" placeholder="Minutes" type="number" onChange = {onChange}/>
+
                 <h4>You want to convert {minutes}</h4>
                 <label htmlFor="hours">Hours</label>
-                <input id="hours" placeholder="Hours" type="number" />
+                <input value={Math.round(minutes/60)} id="hours" placeholder="Hours" type="number" />
+
+                <button onClick={reset}>Reseeet</button>
             </div>
         )
     }
