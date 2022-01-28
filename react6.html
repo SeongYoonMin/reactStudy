@@ -11,26 +11,35 @@
 </body>
 <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
 <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
+<script src="https://unpkg.com/prop-types@15.6/prop-types.js"></script>
 <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 <script type="text/babel">
     const root = document.getElementById("root");
     function Btn(props) {
         console.log(props)
-        return (<button style={{ 
+        return (<button onClick={props.changeValue} style={{ 
             backgroundColor : "tomato",
             color: "white",
             padding: "10px 20px",
             border: 0,
             borderRadius: 10,
+            fontSize: props.fontSize
         }}>
         {props.btnName}
         </button>)
     }
+    Btn.propTypes = {
+        btnName: PropTypes.string,
+        fontSize: PropTypes.number,
+        changeValue: PropTypes.func
+    }
     function App() {
+        const [value, setValue] = React.useState("Save Changes");
+        const changeValue = () => setValue("Revert Changes");
         return (
             <div>
-                <Btn btnName="Save Changes" />
-                <Btn btnName="Continue" />
+                <Btn btnName={value} changeValue={"12"} fontSize={18} />
+                <Btn btnName="Continue" fontSize={18}/>
             </div>
         )
     }
