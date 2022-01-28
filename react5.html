@@ -55,15 +55,9 @@
                     <option value="1">Km & Miles</option>
                 </select>
                 <hr />
-                {
-                    index === "select" ? "Please Select your units" : null
-                }
-                {
-                    index === "0" ? <MinutesToHours /> : null
-                }
-                {
-                    index === "1" ? <KmToMiles /> : null
-                }
+                {index === "select" ? "Please Select your units" : null}
+                {index === "0" ? <MinutesToHours /> : null}
+                {index === "1" ? <KmToMiles /> : null}
             </div>
         );
     }
