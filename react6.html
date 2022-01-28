@@ -29,16 +29,15 @@
         </button>)
     }
     Btn.propTypes = {
-        btnName: PropTypes.string,
+        btnName: PropTypes.string.isRequied,
         fontSize: PropTypes.number,
-        changeValue: PropTypes.func
     }
     function App() {
         const [value, setValue] = React.useState("Save Changes");
         const changeValue = () => setValue("Revert Changes");
         return (
             <div>
-                <Btn btnName={value} changeValue={"12"} fontSize={18} />
+                <Btn btnName={value} changeValue={changeValue} fontSize={18} />
                 <Btn btnName="Continue" fontSize={18}/>
             </div>
         )
